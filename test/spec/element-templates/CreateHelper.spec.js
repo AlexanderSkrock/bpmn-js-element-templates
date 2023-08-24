@@ -594,7 +594,6 @@ describe('provider/element-templates - CreateHelper', function() {
         delegateExpression: '${delegate}'
       });
     }));
-
   });
 
 
