@@ -368,7 +368,8 @@ function TextAreaProperty(props) {
 
   const bpmnFactory = useService('bpmnFactory'),
         commandStack = useService('commandStack'),
-        debounce = useService('debounceInput');
+        debounce = useService('debounceInput'),
+        translate = useService('translate');
 
   return TextAreaEntry({
     debounce,
@@ -378,6 +379,7 @@ function TextAreaProperty(props) {
     description: PropertyDescription({ description }),
     getValue: propertyGetter(element, property, scope),
     setValue: propertySetter(bpmnFactory, commandStack, element, property, scope),
+    validate: propertyValidator(translate, property),
     disabled: editable === false
   });
 }
@@ -911,7 +913,7 @@ function propertyValidator(translate, property) {
       notEmpty
     } = constraints;
 
-    if (notEmpty && isEmptyString(value)) {
+    if (notEmpty && isEmpty(value)) {
       return translate('Must not be empty.');
     }
 
@@ -971,8 +973,12 @@ function unknownBindingError(element, property) {
   return new Error(`unknown binding <${ type }> for element <${ id }>, this should never happen`);
 }
 
-function isEmptyString(string) {
-  return !string || !string.trim().length;
+function isEmpty(string) {
+  if (typeof value === 'string') {
+    return !value.trim().length;
+  }
+
+  return value !== undefined;
 }
 
 function matchesPattern(string, pattern) {
