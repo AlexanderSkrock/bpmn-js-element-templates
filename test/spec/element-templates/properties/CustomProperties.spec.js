@@ -1514,7 +1514,6 @@ describe('provider/element-templates - CustomProperties', function() {
 
   describe('validation on string fields', function() {
     it('should validate nonEmpty', async function() {
-      console.log('string non empty');
 
       // given
       await expectSelected('ValidateTask1');
@@ -1626,13 +1625,13 @@ describe('provider/element-templates - CustomProperties', function() {
       // then
       expectValid(entry);
     });
-  })
+  });
 
   describe('validation on text fields', function() {
     it('should validate nonEmpty', async function() {
-      console.log('text area non empty');
+
       // given
-      await expectSelected('ValidateTask2');
+      const e = await expectSelected('ValidateTask2');
 
       const entry = findEntry('custom-entry-com.validated-text-areas.Task-0', container),
             input = findTextarea(entry);

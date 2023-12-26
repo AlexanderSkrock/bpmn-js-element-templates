@@ -913,11 +913,6 @@ function propertyValidator(translate, property) {
       notEmpty
     } = constraints;
 
-    console.log(`
-    \tConstraints: ${JSON.stringify(constraints)}
-    \tValue: '${value}' of type ${typeof value}
-    `)
-
     if (notEmpty && isEmpty(value)) {
       return translate('Must not be empty.');
     }

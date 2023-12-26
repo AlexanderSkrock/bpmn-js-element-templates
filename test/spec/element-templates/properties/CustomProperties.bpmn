@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.2.0">
   <bpmn:process id="Process_1" isExecutable="false">
     <bpmn:serviceTask id="ConnectorTask_legacy" name="Connector Task (Legacy)" camunda:modelerTemplate="my.connector.legacy.Task">
       <bpmn:extensionElements>
@@ -51,7 +51,7 @@
     </bpmn:sequenceFlow>
     <bpmn:serviceTask id="DelegateTask" name="Delegate Task" camunda:modelerTemplate="my.custom.ServiceTask" camunda:delegateExpression="com.my.custom.Foo" />
     <bpmn:task id="WebserviceTask_NoData" name="Webservice Task NoData" camunda:modelerTemplate="com.mycompany.WsCaller" />
-    <bpmn:task id="ValidateTask1" name="Validate Task" camunda:modelerTemplate="com.validated-inputs.Task" />
+    <bpmn:task id="ValidateTask1" name="Validate Task 1" camunda:modelerTemplate="com.validated-inputs.Task" />
     <bpmn:task id="ValidateTask2" name="Validate Task 2" camunda:modelerTemplate="com.validated-text-areas.Task" />
     <bpmn:callActivity id="CallActivity" name="Call Activity" camunda:modelerTemplate="my.Caller" calledElement="calledProcess">
       <bpmn:extensionElements>
@@ -158,7 +158,7 @@
       <bpmndi:BPMNShape id="Task_1p93nau_di" bpmnElement="WebserviceTask_NoData">
         <dc:Bounds x="800" y="207" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_0pnk8c1_di" bpmnElement="ValidateTask">
+      <bpmndi:BPMNShape id="Task_0pnk8c1_di" bpmnElement="ValidateTask1">
         <dc:Bounds x="291" y="353" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="CallActivity_16ib2yl_di" bpmnElement="CallActivity">
@@ -190,6 +190,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1cex61n_di" bpmnElement="ExternalErrorTask_NoError">
         <dc:Bounds x="800" y="530" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_0pnk8c2_di" bpmnElement="ValidateTask2">
+        <dc:Bounds x="424" y="353" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
