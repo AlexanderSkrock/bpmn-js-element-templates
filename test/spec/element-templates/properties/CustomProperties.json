@@ -391,7 +391,16 @@
             "value": "\\d+"
           }
         }
-      },
+      }
+    ]
+  },
+  {
+    "name": "Validated Text Area Task",
+    "id": "com.validated-text-areas.Task",
+    "appliesTo": [
+      "bpmn:Task"
+    ],
+    "properties": [
       {
         "label": "NotEmpty",
         "description": "Must not be empty",
