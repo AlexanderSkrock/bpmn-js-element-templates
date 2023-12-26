@@ -1514,119 +1514,235 @@ describe('provider/element-templates - CustomProperties', function() {
 
   describe('validation', function() {
 
-    it('should validate nonEmpty', async function() {
+    describe('string fields', function() {
+      it('should validate nonEmpty', async function() {
 
-      // given
-      await expectSelected('ValidateTask');
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-0', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectError(entry, 'Must not be empty.');
+  
+        // when
+        changeInput(input, 'FOO');
+  
+        // then
+        expectValid(entry);
+      });
+  
+  
+      it('should validate minLength', async function() {
+  
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-1', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectError(entry, 'Must have min length 5.');
+  
+        // when
+        changeInput(input, 'FOOOOOOO');
+  
+        // then
+        expectValid(entry);
+      });
+  
+  
+      it('should validate maxLength', async function() {
+  
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-2', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectValid(entry);
+  
+        // when
+        changeInput(input, 'FOOOOOOO');
+  
+        // then
+        expectError(entry, 'Must have max length 5.');
+      });
+  
+  
+      it('should validate pattern (String)', async function() {
+  
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-3', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectError(entry, 'Must match pattern A+B.');
+  
+        // when
+        changeInput(input, 'AAAB');
+  
+        // then
+        expectValid(entry);
+      });
+  
+  
+      it('should validate pattern (String + Message)', async function() {
+  
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-4', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectError(entry, 'Must start with https://');
+  
+        // when
+        changeInput(input, 'https://');
+  
+        // then
+        expectValid(entry);
+      });
+  
+  
+      it('should validate pattern (Integer)', async function() {
+  
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-5', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectError(entry, 'Must be positive integer');
+  
+        // when
+        changeInput(input, '20');
+  
+        // then
+        expectValid(entry);
+      });
+    })
 
-      const entry = findEntry('custom-entry-com.validated-inputs.Task-0', container),
-            input = findInput('text', entry);
+    describe('text fields', function() {
+      it('should validate nonEmpty', async function() {
 
-      // assume
-      expectError(entry, 'Must not be empty.');
-
-      // when
-      changeInput(input, 'FOO');
-
-      // then
-      expectValid(entry);
-    });
-
-
-    it('should validate minLength', async function() {
-
-      // given
-      await expectSelected('ValidateTask');
-
-      const entry = findEntry('custom-entry-com.validated-inputs.Task-1', container),
-            input = findInput('text', entry);
-
-      // assume
-      expectError(entry, 'Must have min length 5.');
-
-      // when
-      changeInput(input, 'FOOOOOOO');
-
-      // then
-      expectValid(entry);
-    });
-
-
-    it('should validate maxLength', async function() {
-
-      // given
-      await expectSelected('ValidateTask');
-
-      const entry = findEntry('custom-entry-com.validated-inputs.Task-2', container),
-            input = findInput('text', entry);
-
-      // assume
-      expectValid(entry);
-
-      // when
-      changeInput(input, 'FOOOOOOO');
-
-      // then
-      expectError(entry, 'Must have max length 5.');
-    });
-
-
-    it('should validate pattern (String)', async function() {
-
-      // given
-      await expectSelected('ValidateTask');
-
-      const entry = findEntry('custom-entry-com.validated-inputs.Task-3', container),
-            input = findInput('text', entry);
-
-      // assume
-      expectError(entry, 'Must match pattern A+B.');
-
-      // when
-      changeInput(input, 'AAAB');
-
-      // then
-      expectValid(entry);
-    });
-
-
-    it('should validate pattern (String + Message)', async function() {
-
-      // given
-      await expectSelected('ValidateTask');
-
-      const entry = findEntry('custom-entry-com.validated-inputs.Task-4', container),
-            input = findInput('text', entry);
-
-      // assume
-      expectError(entry, 'Must start with https://');
-
-      // when
-      changeInput(input, 'https://');
-
-      // then
-      expectValid(entry);
-    });
-
-
-    it('should validate pattern (Integer)', async function() {
-
-      // given
-      await expectSelected('ValidateTask');
-
-      const entry = findEntry('custom-entry-com.validated-inputs.Task-5', container),
-            input = findInput('text', entry);
-
-      // assume
-      expectError(entry, 'Must be positive integer');
-
-      // when
-      changeInput(input, '20');
-
-      // then
-      expectValid(entry);
-    });
-
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-6', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectError(entry, 'Must not be empty.');
+  
+        // when
+        changeInput(input, 'FOO');
+  
+        // then
+        expectValid(entry);
+      });
+  
+  
+      it('should validate minLength', async function() {
+  
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-7', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectError(entry, 'Must have min length 5.');
+  
+        // when
+        changeInput(input, 'FOOOOOOO');
+  
+        // then
+        expectValid(entry);
+      });
+  
+  
+      it('should validate maxLength', async function() {
+  
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-8', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectValid(entry);
+  
+        // when
+        changeInput(input, 'FOOOOOOO');
+  
+        // then
+        expectError(entry, 'Must have max length 5.');
+      });
+  
+  
+      it('should validate pattern (String)', async function() {
+  
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-9', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectError(entry, 'Must match pattern A+B.');
+  
+        // when
+        changeInput(input, 'AAAB');
+  
+        // then
+        expectValid(entry);
+      });
+  
+  
+      it('should validate pattern (String + Message)', async function() {
+  
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-10', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectError(entry, 'Must start with https://');
+  
+        // when
+        changeInput(input, 'https://');
+  
+        // then
+        expectValid(entry);
+      });
+  
+  
+      it('should validate pattern (Integer)', async function() {
+  
+        // given
+        await expectSelected('ValidateTask');
+  
+        const entry = findEntry('custom-entry-com.validated-inputs.Task-11', container),
+              input = findInput('text', entry);
+  
+        // assume
+        expectError(entry, 'Must be positive integer');
+  
+        // when
+        changeInput(input, '20');
+  
+        // then
+        expectValid(entry);
+      });
+    })
   });
 
 
