@@ -973,7 +973,7 @@ function unknownBindingError(element, property) {
   return new Error(`unknown binding <${ type }> for element <${ id }>, this should never happen`);
 }
 
-function isEmpty(string) {
+function isEmpty(value) {
   if (typeof value === 'string') {
     return !value.trim().length;
   }
