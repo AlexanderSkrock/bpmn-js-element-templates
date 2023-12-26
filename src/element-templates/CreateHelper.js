@@ -168,7 +168,6 @@ export function createCamundaExecutionListener(binding, value, bpmnFactory) {
     });
   }
 
-  const boundPropertyName = name || 'value';
   return bpmnFactory.create('camunda:ExecutionListener', {
     event,
     [implementationType]: value
